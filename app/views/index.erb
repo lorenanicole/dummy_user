@@ -1,21 +1,46 @@
 <div class="container">
-  <h3>Log-in or Sign-up</h3>
-  <form action='/profile' method='post' id="log-on">
-    <ul>
-      <li>
-        <label for="email">Email:</label>
-        <input type=text name="email" id="user">
-      </li>
-      <li>
-        <label for="password">Password: </label>
-        <input type=password name="password">
-      </li>
-      <li>
-        <input type=submit value="Log-in">
-      </li>
-      <li>
-        <a href="/create">Register (new users)</a>
-      </li>
-    </ul>
+  <% if !@user_id.nil? %>
+    <a href="/logout" align="left">Log Out</a>
+  <% else %>
+    <h3>Log-in or Sign-up</h3>
+    <form action='/profile' method='post' id="log-on">
+      <ul>
+        <li>
+          <label for="email">Email:</label>
+          <input type=text name="email" id="user">
+        </li>
+        <li>
+          <label for="password">Password: </label>
+          <input type=password name="password">
+        </li>
+        <li>
+          <input type=submit value="Log-in">
+        </li>
+        <li>
+          <a href="/create">Register (new users)</a>
+        </li>
+      </ul>
+    </form>
+  <% end %>
+
+  <h1>Welcome to your fabulous shortening URL thingy!</h1>
+  <% if !@new_secret.nil? %>
+  <p>Here is your super short and succint new URL: <a href= "<%= @new_secret %>"></a></p>
+  <% end %>
+  <% if @errors%>
+  <% if !@errors.empty?%>
+    <p><%= "Oops, looks like we had a problem: #{@errors[:full_url] }" %></p>
+  <% end %>
+  <% end %>
+  <form action='/urls' method='post'>
+  URL to shortify: <input type='text' name='new'><br><br>
+    <input type='submit' value='AWESOME BUTTON'>
   </form>
+
+  <ul>
+    <% @all_urls.each do |link| %>
+    <li>Link: <a href= <%=link.full_url %> > <%= link.full_url %> </a>, Shortened: <a href= <%=link.shortened_url %> > <%= link.shortened_url %> </a> Times Visited: <%= link.click_counter %></li>
+    <% end %>
+  </ul>
+
 </div>

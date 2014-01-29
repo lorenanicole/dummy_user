@@ -6,15 +6,15 @@ get '/' do
   @new_secret = session[:secret]
   # binding.pry
   @errors =  session[:error]
-  session[:user_id] == nil ? session_id = 4 : session_id = session[:user_id]
-  @all_urls = Url.where(user_id: session_id)
+  # session[:user_id] == nil ? session_id = 4 : session_id = session[:user_id]
+  @all_urls = Url.where(user_id: assign_post_id(session[:user_id]) )
   # binding.pry
   erb :index
 end
 
 post '/urls' do
-  session[:user_id] == nil ? session_id = 4 : session_id = session[:user_id]
-  temp_url = Url.new(full_url: params[:new], click_counter: 0, user_id: session_id)
+  # session[:user_id] == nil ? session_id = 4 : session_id = session[:user_id]
+  temp_url = Url.new(full_url: params[:new], click_counter: 0, user_id: assign_post_id(session[:user_id]) )
   temp_url.save
   # binding.pry
   if !temp_url.errors.empty?

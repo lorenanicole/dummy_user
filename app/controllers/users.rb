@@ -37,8 +37,8 @@ end
 post '/create' do
   User.create(fullname: params[:fullname], email: params[:email],
     password: params[:password])
-  new_id = Url.where(user_id: session[:user_id])
-  session[:user_id] = new_id
+  # new_id = User.where(email: session[:user_id])
+  session[:user_id] = find_session_id(params[:email])
   redirect("/")
 end
 

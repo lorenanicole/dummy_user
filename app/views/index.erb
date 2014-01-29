@@ -25,7 +25,7 @@
 
   <h1>Welcome to your fabulous shortening URL thingy!</h1>
   <% if !@new_secret.nil? %>
-  <p>Here is your super short and succint new URL: <a href= "<%= @new_secret %>"></a></p>
+  <p>Here is your super short and succint new URL: <a href= "<%= @new_secret %>"><%= @new_secret %></a></p>
   <% end %>
   <% if @errors%>
   <% if !@errors.empty?%>

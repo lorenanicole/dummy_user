@@ -7,3 +7,13 @@
 th {
   text-align: left;
 }
+
+label{
+  width: 200px;
+  display: inline-block;
+}
+
+li{
+  list-style: none;
+  margin: 20px;
+}

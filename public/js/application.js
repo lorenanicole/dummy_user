@@ -1,7 +1,10 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  // $( "#log-on" ).submit(function( event ) {
+  //   var user = $("#user").val();
+  //   var default_action = $(this).attr("action");
+  //   var new_action = default_action + "/" + user
+  //   $(this).attr("action", new_action)
+    // alert($(this).attr("action"))
+    // event.preventDefault();
+  });
 });
